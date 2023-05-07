@@ -16,7 +16,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
         DWORD vkCode = kbdStruct->vkCode;
         cout << vkCode << endl;
         if (vkCode == KeyboardHook::clickKey) {  // Der ASCII-Code für "C" ist 67
-            std::cout << "Die Taste C wurde gedrückt!" << std::endl;
+            std::cout << "Autoclick!" << std::endl;
             /*if (mouseClick)
             {
                 mouseClick = false;
@@ -62,13 +62,3 @@ void KeyboardHook::handleHook()
         cout << "Reached2222";
     }
 }
-
-//char KeyboardHook::getClickKey()
-//{
-//    return clickKey;
-//}
-//
-//void KeyboardHook::setClickKey(char key)
-//{
-//    clickKey = key;
-//}
