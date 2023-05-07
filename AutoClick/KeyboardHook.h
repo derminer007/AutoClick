@@ -14,10 +14,15 @@ private:
 	MSG msg;
 
 	bool clickEnable;
-	char clickKey;
 public:
+	static int clickKey;
+	static int exitKey;
+
 	KeyboardHook();
 	~KeyboardHook();
-	void HandleHook();
+	
+	void handleHook();
+	/*static char getClickKey();
+	static void setClickKey(char key);*/
 };
 

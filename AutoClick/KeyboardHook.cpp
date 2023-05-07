@@ -15,7 +15,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
         KBDLLHOOKSTRUCT* kbdStruct = (KBDLLHOOKSTRUCT*)lParam;
         DWORD vkCode = kbdStruct->vkCode;
         cout << vkCode << endl;
-        if (vkCode == 'C') {  // Der ASCII-Code für "C" ist 67
+        if (vkCode == KeyboardHook::clickKey) {  // Der ASCII-Code für "C" ist 67
             std::cout << "Die Taste C wurde gedrückt!" << std::endl;
             /*if (mouseClick)
             {
@@ -26,6 +26,10 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
                 mouseClick = true;
             }*/
             ClickLeftMouseButton();
+        }
+        if (vkCode == KeyboardHook::exitKey)
+        {
+            exit(0);
         }
         /*if (vkCode == 'D')
         {
@@ -41,6 +45,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
 KeyboardHook::KeyboardHook()
 {
     keyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardProc, NULL, 0);
+    //clickKey = 'C';
 }
 
 KeyboardHook::~KeyboardHook()
@@ -48,7 +53,7 @@ KeyboardHook::~KeyboardHook()
     UnhookWindowsHookEx(keyboardHook);
 }
 
-void KeyboardHook::HandleHook()
+void KeyboardHook::handleHook()
 {
     while (GetMessage(&msg, NULL, 0, 0)) {
         cout << "Reached";
@@ -57,3 +62,13 @@ void KeyboardHook::HandleHook()
         cout << "Reached2222";
     }
 }
+
+//char KeyboardHook::getClickKey()
+//{
+//    return clickKey;
+//}
+//
+//void KeyboardHook::setClickKey(char key)
+//{
+//    clickKey = key;
+//}
