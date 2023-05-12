@@ -3,9 +3,23 @@
 POINT p;
 
 void ClickLeftMouseButton() {
-    INPUT input = {};
+    INPUT input = { 0 };
+
+    // Set up the input structure for a mouse left button down event
     input.type = INPUT_MOUSE;
-    input.mi.dwFlags = MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP;
+    input.mi.mouseData = 0;
+    input.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+
+    // Send the input event
+    SendInput(1, &input, sizeof(INPUT));
+
+    // Sleep
+    Sleep(1);
+
+    // Set up the input structure for a mouse left button up event
+    input.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+
+    // Send the input event
     SendInput(1, &input, sizeof(INPUT));
 }
 
@@ -21,6 +35,9 @@ void sendMouseClick(int x, int y) {
 
     // Send the input event
     SendInput(1, &input, sizeof(INPUT));
+
+    // Sleep
+    Sleep(1);
 
     // Set up the input structure for a mouse left button up event
     input.mi.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP;

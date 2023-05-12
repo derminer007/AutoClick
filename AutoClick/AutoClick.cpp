@@ -27,10 +27,11 @@ void unlimitedClicks()
         if (KeyboardHook::mouseClick)
         {
             cout << "Unl\n";
-            sendMouseClickDLL();
+            //sendMouseClickDLL();
+            ClickLeftMouseButton();
             cout << "Fertig outer\n";
         }
-        Sleep(1000);
+        //Sleep(1000);
         cout << "END-IF\n";
     }
 }
