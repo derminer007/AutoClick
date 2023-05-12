@@ -3,19 +3,49 @@
 
 #include <iostream>
 #include <Windows.h>
+#include <thread>
+#include <mutex>
 #include "KeyboardHook.h"
 
 using namespace std;
 
-bool mouseClick = false;
+//bool mouseClick = false;
 bool running = true;
 
 int KeyboardHook::clickKey = 186;  //Ü
 int KeyboardHook::exitKey = 222;   //Ä
-int main() {
+bool KeyboardHook::mouseClick = false;
+
+void unlimitedClicks()
+{
     
+    while(true)
+    {
+        //lock_guard<mutex> lock(m1);
+        cout << "Enter-WHILE\n";
+        cout << "Schlei:  " << KeyboardHook::mouseClick << endl;
+        if (KeyboardHook::mouseClick)
+        {
+            cout << "Unl\n";
+            sendMouseClickDLL();
+            cout << "Fertig outer\n";
+        }
+        Sleep(1000);
+        cout << "END-IF\n";
+    }
+}
+
+int main(int argc, char** argv) {
+
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) < 0)	// Init SDL für Controller
+    {
+        fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
+        exit(1);
+    }
+
+    thread t1(unlimitedClicks);
     KeyboardHook hook = KeyboardHook();
     hook.handleHook();
-	
+	t1.join();
     return 0;
 }
