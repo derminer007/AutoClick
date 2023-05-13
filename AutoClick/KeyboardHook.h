@@ -2,7 +2,6 @@
 #include <Windows.h>
 #include <iostream>
 #include <cstdlib>
-#include <SDL.h>
 #include <mutex>
 #include <thread>
 #include <atomic>

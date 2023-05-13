@@ -38,12 +38,6 @@ void unlimitedClicks()
 
 int main(int argc, char** argv) {
 
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) < 0)	// Init SDL für Controller
-    {
-        fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
-        exit(1);
-    }
-
     thread t1(unlimitedClicks);
     KeyboardHook hook = KeyboardHook();
     hook.handleHook();
