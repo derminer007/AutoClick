@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <iostream>
+#include <cstdlib>
 #include <SDL.h>
 #include <mutex>
 #include <thread>
@@ -8,10 +9,10 @@
 
 using namespace std;
 
-void ClickLeftMouseButton();
-LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam);
-int sendMouseClick2();
-void sendMouseClickSDL();
+void clickLeftMouseButton();
+//LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam);
+//int sendMouseClick2();
+//void sendMouseClickSDL();
 void sendMouseClickDLL();
 //static bool mouseClick = false;
 //extern atomic<bool> mouseClick = false;
@@ -33,6 +34,7 @@ public:
 	~KeyboardHook();
 	
 	void handleHook();
+	static LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam);
 	/*static char getClickKey();
 	static void setClickKey(char key);*/
 };

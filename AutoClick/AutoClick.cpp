@@ -28,7 +28,7 @@ void unlimitedClicks()
         {
             cout << "Unl\n";
             //sendMouseClickDLL();
-            ClickLeftMouseButton();
+            clickLeftMouseButton();
             cout << "Fertig outer\n";
         }
         //Sleep(1000);
