@@ -21,9 +21,18 @@
     <ClCompile Include="KeyboardHook.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Fenster.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KeyboardHook.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoClick.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Fenster.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,13 +1,17 @@
 // AutoClick.cpp : Diese Datei enthält die Funktion "main". Hier beginnt und endet die Ausführung des Programms.
 //
-
+//#pragma warning(error:4003) //not enough actual parameters for macro
+#include "AutoClick.h"  // winSock2 (wxWidgets) vor Windows.h einbinden
+#include "KeyboardHook.h"
 #include <iostream>
 #include <Windows.h>
 #include <thread>
 #include <mutex>
-#include "KeyboardHook.h"
+
 
 using namespace std;
+
+IMPLEMENT_APP(AutoClick)
 
 //bool mouseClick = false;
 bool running = true;
@@ -36,11 +40,24 @@ void unlimitedClicks()
     }
 }
 
-int main(int argc, char** argv) {
+//int main(int argc, char** argv) {
+//
+//    thread t1(unlimitedClicks);
+//    KeyboardHook hook = KeyboardHook();
+//    hook.handleHook();
+//	  t1.join();
+//    return 0;
+//}
+
+bool AutoClick::OnInit()
+{
+    f1 = new Fenster();
+    f1->Show();
 
     thread t1(unlimitedClicks);
     KeyboardHook hook = KeyboardHook();
     hook.handleHook();
-	t1.join();
-    return 0;
+    t1.join();
+
+    return true;
 }
